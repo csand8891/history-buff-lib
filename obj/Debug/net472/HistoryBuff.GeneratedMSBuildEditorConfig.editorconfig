@@ -1,6 +1,6 @@
 is_global = true
 build_property.RootNamespace = HistoryBuff
-build_property.ProjectDir = C:\Users\corey\dev\HistoryBuff\
+build_property.ProjectDir = C:\Users\corey\Documents\Github\history-buff-lib\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false

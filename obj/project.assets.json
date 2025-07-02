@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\corey\\dev\\HistoryBuff\\HistoryBuff.csproj",
+      "projectUniqueName": "C:\\Users\\corey\\Documents\\Github\\history-buff-lib\\HistoryBuff.csproj",
       "projectName": "HistoryBuff",
-      "projectPath": "C:\\Users\\corey\\dev\\HistoryBuff\\HistoryBuff.csproj",
+      "projectPath": "C:\\Users\\corey\\Documents\\Github\\history-buff-lib\\HistoryBuff.csproj",
       "packagesPath": "C:\\Users\\corey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\corey\\dev\\HistoryBuff\\obj\\",
+      "outputPath": "C:\\Users\\corey\\Documents\\Github\\history-buff-lib\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,12 +51,12 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net472": {
         "targetAlias": "net472",
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
