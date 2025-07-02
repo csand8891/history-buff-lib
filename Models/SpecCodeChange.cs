@@ -2,12 +2,39 @@ namespace HistoryBuff.Models
 {
     public class SpecCodeChange
     {
-        SpecChangeIndicator ChangeType { get; set; }
-        string SpecCodeSection { get; set; }
-        string SpecNumber { get; set; }
-        string SpecBit { get; set; }
-        string SpecName { get; set; }
-        string OldValue { get; set; }
-        string NewValue { get; set; }
+        /// <summary>
+        /// The type of change.
+        /// </summary>
+        public SpecChangeIndicator ChangeType { get; set; }
+
+        /// <summary>
+        /// The section of the spec code that was changed.
+        /// </summary>
+        public string SpecCodeSection { get; set; }
+
+        /// <summary>
+        /// The spec number.
+        /// </summary>
+        public string SpecNumber { get; set; }
+
+        /// <summary>
+        /// The spec bit.
+        /// </summary>
+        public string SpecBit { get; set; }
+
+        /// <summary>
+        /// The name of the spec.
+        /// </summary>
+        public string SpecName { get; set; }
+
+        /// <summary>
+        /// The old value.
+        /// </summary>
+        public string OldValue { get; set; }
+
+        /// <summary>
+        /// The new value.
+        /// </summary>
+        public string NewValue { get; set; }
     }
 }
