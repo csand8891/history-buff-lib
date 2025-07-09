@@ -18,7 +18,7 @@ namespace HistoryBuff.Services
         // Regex to capture a spec code change line based on value changes.
         // Example: PLC1  SPEC NO.11 bit1 0 -> 1
         private static readonly Regex SpecCodeRegex = new Regex(
-            @"^(?<section>\w+)\s+SPEC NO\.(?<number>\d+)\s+bit(?<bit>\d+)\s+(?<oldVal>\d+)\s*->\s*(?<newVal>\d+)\s*$",
+            @"^(?<section>\w+)\s+SPEC NO\.\s*(?<number>\d+)\s+bit(?<bit>\d+)\s+(?<oldVal>\d+)\s*->\s*(?<newVal>\d+)\s*$",
             RegexOptions.Compiled);
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace HistoryBuff.Services
             }
 
             var log = new SoftwareHistoryLog();
-            var lines = File.ReadAllLines(filePath);
+            var lines = File.ReadLines(filePath);
             HistoryRecord currentRecord = null;
 
             foreach (var line in lines)
@@ -61,13 +61,38 @@ namespace HistoryBuff.Services
                 // If we haven't found the first record header yet, skip any preceding lines.
                 if (currentRecord == null) continue;
 
-                // Process the body of the history record
-                currentRecord.Lines.Add(ParseHistoryLine(line));
+                // Ignore empty or whitespace-only lines that might exist between records.
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    continue;
+                }
 
+                // Check for the most specific line type (spec code change) first.
                 var specCodeChange = ParseSpecCodeChange(line);
                 if (specCodeChange != null)
                 {
                     currentRecord.SpecCodeChanges.Add(specCodeChange);
+
+                    // Map the SpecChangeIndicator to the more general ChangeIndicator for the line.
+                    ChangeIndicator lineType;
+                    switch (specCodeChange.ChangeType)
+                    {
+                        case SpecChangeIndicator.Added:
+                            lineType = ChangeIndicator.Added;
+                            break;
+                        case SpecChangeIndicator.Removed:
+                            lineType = ChangeIndicator.Removed;
+                            break;
+                        default: // Handles Modified
+                            lineType = ChangeIndicator.Modified;
+                            break;
+                    }
+                    currentRecord.Lines.Add(new HistoryLine { Type = lineType, OriginalText = line });
+                }
+                else
+                {
+                    // If it's not a spec code change, process it as a general history line.
+                    currentRecord.Lines.Add(ParseHistoryLine(line));
                 }
             }
 
@@ -82,23 +107,18 @@ namespace HistoryBuff.Services
 
         private HistoryLine ParseHistoryLine(string line)
         {
-            var historyLine = new HistoryLine { OriginalText = line };
             if (line.StartsWith(">"))
             {
-                historyLine.Type = ChangeIndicator.Added;
-                historyLine.OriginalText = line.Substring(1).TrimStart();
+                return new HistoryLine { Type = ChangeIndicator.Added, OriginalText = line.Substring(1).TrimStart() };
             }
-            else if (line.StartsWith("<"))
+            
+            if (line.StartsWith("<"))
             {
-                historyLine.Type = ChangeIndicator.Removed;
-                historyLine.OriginalText = line.Substring(1).TrimStart();
+                return new HistoryLine { Type = ChangeIndicator.Removed, OriginalText = line.Substring(1).TrimStart() };
             }
-            else
-            {
-                historyLine.Type = ChangeIndicator.Unchanged;
-                historyLine.OriginalText = line.TrimStart();
-            }
-            return historyLine;
+            
+            // If no change indicator is present, the line is considered unchanged.
+            return new HistoryLine { Type = ChangeIndicator.Unchanged, OriginalText = line };
         }
 
         private SpecCodeChange ParseSpecCodeChange(string line)

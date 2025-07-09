@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug MSTest (.NET Framework)",
+            "type": "clr",
+            "request": "launch",
+            // IMPORTANT: Update this path to match the location of vstest.console.exe on your machine.
+            "program": "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/vstest.console.exe",
+            "args": [
+                "${workspaceFolder}/HistoryBuff.Tests/bin/Debug/net472/HistoryBuff.Tests.dll",
+            ],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "build",
+            "justMyCode": false
+        }
+    ]
+}

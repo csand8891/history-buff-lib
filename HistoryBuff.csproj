@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
 
+  <ItemGroup>
+    <!-- Exclude the test project from the library's compilation -->
+    <Compile Remove="HistoryBuff.Tests\**\*.cs" />
+  </ItemGroup>
+
+  
 </Project>

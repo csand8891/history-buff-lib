@@ -16,6 +16,10 @@ namespace HistoryBuff.Models
         /// <summary>
         /// The line was removed.
         /// </summary>
-        Removed
+        Removed,
+        /// <summary>
+        /// The line was modified (e.g., a spec change from one non-zero value to another).
+        /// </summary>
+        Modified
     }
 }

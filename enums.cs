@@ -1,4 +1,4 @@
-namespace HistoryBuff
+/* namespace HistoryBuff
 {
     public enum ChangeIndicator
     {
@@ -16,4 +16,4 @@ namespace HistoryBuff
         Off,
         NA
     }
-}
+} */

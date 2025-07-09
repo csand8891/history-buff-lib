@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HistoryBuff")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4bacbb1be2653f66dbc88ee7c8eaf4fffa1da1a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f5bffd8b3aa5475304bd12331c36716ebd9a1d32")]
 [assembly: System.Reflection.AssemblyProductAttribute("HistoryBuff")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HistoryBuff")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
